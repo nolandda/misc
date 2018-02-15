@@ -1,3 +1,6 @@
+/** 
+ * @author Dan Noland <nolandda@nolandda.org>
+ */
 
 #include <errno.h>
 #include <limits.h>
