@@ -7,15 +7,15 @@ INCLUDES =
 # dirty integer tricks relying on overflow.
 CFLAGS = -Wall -Wextra -ftrapv -g -c
 
-SRCS_XPE = xplatform_endian.c test_xplatform_endian.c 
-OBJS_XPE = $(SRCS_XPE:%.c=%.o)
+SRCS_TOK = tokenize.c test_tokenize.c 
+OBJS_TOK = $(SRCS_TOK:%.c=%.o)
 
 .PHONY: all
 
-all: runtest_xpe
+all: runtest_tokenize
 
-runtest_xpe: $(OBJS_XPE)
-	$(CC) $(LDFLAGS) -o runtest_xpe $(OBJS_XPE)
+runtest_tokenize: $(OBJS_TOK)
+	$(CC) $(LDFLAGS) -o runtest_tokenize $(OBJS_TOK)
 
 
 # Inference Rule
@@ -27,4 +27,4 @@ tags:
 	ctags -e *.c *.h
 
 clean:
-	rm -f runtest_xpe *.o 
+	rm -f runtest_tokenize *.o 

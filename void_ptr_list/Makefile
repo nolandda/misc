@@ -22,6 +22,9 @@ runtest_vpl: $(OBJS_VPL)
 %.o: %.c
 	$(CC) $(INCLUDES) $(CFLAGS) $< -o $@
 
+.PHONY: tags
+tags:
+	ctags -e *.c *.h
 
 clean:
-	rm -f runtest_vpl *.o 
+	rm -f runtest_vpl *.o TAGS

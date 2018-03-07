@@ -22,6 +22,9 @@ runtest_utils: $(OBJS_UTILS)
 %.o: %.c
 	$(CC) $(INCLUDES) $(CFLAGS) $< -o $@
 
+.PHONY: tags
+tags:
+	ctags -e *.c *.h
 
 clean:
 	rm -f runtest_utils *.o 

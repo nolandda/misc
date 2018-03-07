@@ -22,6 +22,9 @@ runtest_fltser: $(OBJS_FLTSER)
 %.o: %.c
 	$(CC) $(INCLUDES) $(CFLAGS) $< -o $@
 
+.PHONY: tags
+tags:
+	ctags -e *.c *.h
 
 clean:
 	rm -f runtest_fltser *.o 
