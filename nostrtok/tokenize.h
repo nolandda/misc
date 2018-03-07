@@ -1,5 +1,11 @@
-/** 
+/**
+ * @file   tokenize.h
  * @author Dan Noland <nolandda@nolandda.org>
+ * @date   Wed Mar  7 17:44:52 2018
+ * 
+ * @brief  Header for tokenizer 
+ * 
+ * 
  */
 
 #include <stdint.h>
@@ -15,20 +21,21 @@ typedef struct token_set_type {
   size_t curidx;
 } tokset_t;
 
+// Use this as the sep value to break on whitespace
+extern const char* ASCII_WHITESPACE_CHARS;
 
 // API Functions 
-size_t create_tokens( tokset_t* ctx, const char* str, 
+size_t create_tokens( tokset_t* set, const char* str, 
 		      const char* sep, uint8_t trim );
-const char* get_token( tokset_t* ctx, size_t idx );
-const char* get_next_token( tokset_t* ctx );
+size_t create_ws_delimited_tokens( tokset_t* set, const char* str );
+const char* get_token( tokset_t* set, size_t idx );
+const char* get_next_token( tokset_t* set );
 
-size_t get_num_tokens( const tokset_t* ctx );
-void reset_token_counter( tokset_t* ctx );
+size_t get_num_tokens( const tokset_t* set );
+void reset_token_counter( tokset_t* set );
 
-void free_tokens( tokset_t* ctx );
+void free_tokens( tokset_t* set );
 
-
-// NON-API Functions. Don't call these.
-void print_tokens( const tokset_t* ctx );
+void print_tokens( const tokset_t* set );
 
 #endif // __TOKENIZE_H__
