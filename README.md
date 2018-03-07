@@ -1,6 +1,10 @@
 # misc
 Examples, Useful Helper Functions I Rewrite Over and Over, Small Code Snippets That Might Be Useful, Et Cetera
 
+A major design goal of these is to have as few dependencies on libraries
+other than libc as possible to enable them to be rapidly integrated
+into many embedded systems. 
+
 ## xplatform_endian
 Convert/serialize fixed width integer types to big-endian byte
 buffers. These are optimized for cross platform compatibility not for
@@ -24,3 +28,12 @@ Programming II class once you realized you would need it for every
 project. It uses common conceits like iterators and contexts for
 loading up function pointers for comparing / allocating data the
 "class" knows nothing about.
+
+## nostrtok
+The default C tokenizer strtok() is so awful that even its own man
+page recommended it be avoided for a time. This one uses a bit more
+memory, but it doesn't corrupt the input string and doesn't keep any
+state in hidden internal static variables making it much easier to
+make threadsafe.
+
+
