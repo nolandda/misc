@@ -1,9 +1,9 @@
-# misc
-Examples, Useful Helper Functions I Rewrite Over and Over, Small Code Snippets That Might Be Useful, Et Cetera
+# My miscellaneous code
+Examples, useful helper functions I rewrite over and over, small code snippets that might be useful, et cetera.
 
-A major design goal of these is to have as few dependencies on libraries
-other than libc as possible to enable them to be rapidly integrated
-into many embedded systems. 
+A major design goal of these is to have as few dependencies other than
+libc / standard UNIX system calls as possible to enable them to be
+rapidly integrated into many embedded systems.
 
 ## xplatform_endian
 Convert/serialize fixed width integer types to big-endian byte
@@ -30,10 +30,10 @@ loading up function pointers for comparing / allocating data the
 "class" knows nothing about.
 
 ## nostrtok
-The default C tokenizer strtok() is so awful that even its own man
-page recommended it be avoided for a time. This one uses a bit more
-memory, but it doesn't corrupt the input string and doesn't keep any
-state in hidden internal static variables making it much easier to
-make threadsafe.
+The default C tokenizer strtok() is so awful that [even its own man
+page recommended it be avoided](https://refspecs.linuxfoundation.org/LSB_1.0.0/gLSB/baselib-strtok-r-3.html) for a time. This one uses a bit more
+memory, but it doesn't corrupt the input string, can be used on
+constant strings, and doesn't keep any state in hidden internal static
+variables making it much easier to make threadsafe.
 
 
