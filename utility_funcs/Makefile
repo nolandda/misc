@@ -7,7 +7,7 @@ INCLUDES =
 # dirty integer tricks relying on overflow.
 CFLAGS = -Wall -Wextra -ftrapv -g -c
 
-SRCS_UTILS = safe_atoi.c test_utils.c
+SRCS_UTILS = safe_atoi.c exec_utils.c test_utils.c
 OBJS_UTILS = $(SRCS_UTILS:%.c=%.o)
 
 .PHONY: all

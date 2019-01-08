@@ -4,6 +4,9 @@
 #include <limits.h>
 
 extern int safe_atoi(int* intval, const char* str);
+extern int run_command(char* const * cmd);
+extern int run_command_and_pipe_input(char* const * cmd, 
+				      const char* inputstr);
 
 static void print_results(char* name, uint32_t errs)
 {
@@ -120,6 +123,48 @@ static uint32_t test_safe_atoi()
 
   return errs;
 }
+
+
+static uint32_t test_run_command()
+{
+  uint32_t errs = 0;
+  int rv = 0;
+  int intret = 0;
+  int testval = 0;
+
+  // Negative test cases
+  char* const * cmd0 = NULL; 
+  rv = run_command(cmd0);
+
+  char* const cmd1[] = {0};
+  rv = run_command(cmd1);
+
+  char* const cmd2[] = {"/bin/this_is_not_a_valid_executable", 0};
+  rv = run_command(cmd2);
+
+  // Positive test cases
+  char* const cmd3[] = {"/bin/ls", "-al", 0};
+  rv = run_command(cmd3);
+
+  return errs;
+}
+
+static uint32_t test_run_command_and_pipe_input()
+{
+  uint32_t errs = 0;
+  int rv = 0;
+  //int intret = 0;
+  //int testval = 0;
+  
+  char* const cmd3[] = {"/usr/bin/sort", "--reverse", 0};
+  const char* indata = "aaa\nbbbb\nccccc\ndddddd\n";
+  rv = run_command_and_pipe_input(cmd3, indata);
+
+  return errs;
+}
+
+
+
 
 
 int main(int argc, char** argv)
